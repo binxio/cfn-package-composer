@@ -3,7 +3,7 @@ GEM
   specs:
     cfnresponse (0.4.0)
     httpclient (2.8.3)
-    rubyzip (1.0.0)
+    rubyzip (1.3.0)
 
 PLATFORMS
   ruby
@@ -11,7 +11,7 @@ PLATFORMS
 DEPENDENCIES
   cfnresponse (~> 0.4.0)!
   httpclient (~> 2.8.3)!
-  rubyzip (~> 1.0.0)!
+  rubyzip (~> 1.3.0)!
 
 BUNDLED WITH
    1.15.4
