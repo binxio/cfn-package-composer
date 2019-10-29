@@ -119,7 +119,7 @@ Package Composer provider supports the following properties:
  The Files array contains strings in a particular format. Each string is
  constructed as follows:
  
- <path/to/object>:<payload>
+ `<path/to/object>:<payload>`
  
  It depends on the type of payload as to how the Package Composer renders the
  payload. It supports the following:
@@ -128,7 +128,7 @@ Package Composer provider supports the following properties:
     -  If the payload is an URL, the Custom Provider will fetch the contents
        of the URL, following any redirects, and place the contents in the
        object
- - s3 object, e.g. s3://<region>/<bucket_name>/path/to/object
+ - s3 object, e.g. `s3://<region>/<bucket_name>/path/to/object`
     -  The custom provider is able to fetch content from an S3 bucket, provided
        that you have access to that bucket
  - Plain text, e.g. plain://my text here
