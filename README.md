@@ -115,7 +115,10 @@ Package Composer provider supports the following properties:
        upload the provided Files to the S3 bucket without zipping them.
        When `true`, you can reference the created zip file location with
        `!GetAtt 'MyComposedPackage.Message'`.
- 
+- S3Key
+    - If omitted, the file name will be generated dynamicly. If you specify this
+      property, the file name is you spefified is used. E.g.: "foobar.zip"
+
  The Files array contains strings in a particular format. Each string is
  constructed as follows:
  

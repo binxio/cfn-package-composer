@@ -70,6 +70,8 @@ def lambda_handler(event:, context:)
 
   region = event["ResourceProperties"]["AWSRegion"]
   bucket = event["ResourceProperties"]["UploadBucket"]
+  s3_key = event["ResourceProperties"]["S3Key"]
+
   case event["RequestType"]
   when "Delete"
     send_response(event, context, "SUCCESS")
@@ -94,8 +96,13 @@ def lambda_handler(event:, context:)
         File.open("/tmp/#{zipfile_name}", "wb") { |f| f.write(buffer) }
         # Upload zipfile to s3
         s3 = Aws::S3::Resource.new(region: prop(event, "AWSRegion"))
-        obj = s3.bucket(prop(event, "UploadBucket")).object(zipfile_name)
+        if s3_key
+          obj = s3.bucket(prop(event, "UploadBucket")).object(s3_key)
+        else
+          obj = s3.bucket(prop(event, "UploadBucket")).object(zipfile_name)
+        end
         obj.upload_file("/tmp/#{zipfile_name}")
+        zipfile_name = s3_key if s3_key
         response = {
           "Message": "#{prop(event, "UploadBucket")}/#{zipfile_name}"
         }
